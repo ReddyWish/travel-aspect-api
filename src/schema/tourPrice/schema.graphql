@@ -1,0 +1,33 @@
+extend type Query {
+    tourPrices: [TourPrice!]!
+    tourPrice(id: ID!): TourPrice
+}
+
+extend type Mutation {
+    createTourPrice(tourId: ID!, input: TourPriceCreateInput!): TourPrice!
+    updateTourPrice(id: ID!, input: TourPriceUpdateInput!): TourPrice!
+    deleteTourPrice(id: ID!): TourPrice!
+}
+
+input TourPriceUpdateInput {
+    currencyId: ID
+    amount: Float
+    comment: String
+}
+
+input TourPriceCreateInput {
+    currencyId: ID!
+    amount: Float!
+    comment: String
+}
+
+type TourPrice {
+    id: ID!
+    tourId: ID!
+    currency: Currency!
+    currencyId: ID!
+    amount: Float!
+    comment: String
+    createdAt: DateTime!
+    updatedAt: DateTime!
+}

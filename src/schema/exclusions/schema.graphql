@@ -1,0 +1,25 @@
+extend type Query {
+    tourExclusions(tourId: ID!): [TourExclusion!]!
+}
+
+extend type Mutation {
+    createTourExclusions(tourId: ID!, input: [TourExclusionInput!]!): [TourExclusion!]!
+    updateTourExclusions(tourId: ID!, input: [TourExclusionUpdateInput!]!): [TourExclusion!]!
+    deleteTourExclusions(tourId: ID!): [TourExclusion!]!
+}
+
+input TourExclusionInput {
+    description: String!
+}
+
+input TourExclusionUpdateInput {
+    id: ID!
+    description: String!
+}
+
+type TourExclusion {
+    id: ID!
+    description: String!
+    createdAt: DateTime!
+    updatedAt: DateTime!
+}

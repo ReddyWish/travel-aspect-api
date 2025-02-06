@@ -1,0 +1,25 @@
+extend type Query {
+    currencies: [Currency!]!
+    currency(id: ID!): Currency
+}
+
+extend type Mutation {
+    createCurrency(input: CurrencyCreateInput!): Currency!
+    updateCurrency(id: ID!, input: CurrencyUpdateInput!): Currency!
+    deleteCurrency(id: ID!): Currency!
+}
+
+input CurrencyUpdateInput {
+    code: String
+}
+
+input CurrencyCreateInput {
+    code: String!
+}
+
+type Currency {
+    id: ID!
+    code: String!
+    createdAt: DateTime!
+    updatedAt: DateTime!
+}

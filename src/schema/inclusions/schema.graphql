@@ -1,0 +1,25 @@
+extend type Query {
+    tourInclusions(tourId: ID!): [TourInclusion!]!
+}
+
+extend type Mutation {
+    createTourInclusions(tourId: ID!, input: [TourInclusionInput!]!): [TourInclusion!]!
+    updateTourInclusions(tourId: ID!, input: [TourInclusionUpdateInput!]!): [TourInclusion!]!
+    deleteTourInclusions(tourId: ID!): [TourInclusion!]!
+}
+
+input TourInclusionInput {
+    description: String!
+}
+
+input TourInclusionUpdateInput {
+    id: ID!
+    description: String!
+}
+
+type TourInclusion {
+    id: ID!
+    description: String!
+    createdAt: DateTime!
+    updatedAt: DateTime!
+}

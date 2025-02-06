@@ -1,0 +1,61 @@
+extend type Query {
+    tours: [Tour!]!
+    tour(id: ID!): Tour
+}
+
+extend type Mutation {
+    createTour(input: TourCreateInput!): Tour!
+    updateTour(id: ID!, input: TourUpdateInput!): Tour!
+    deleteTour(id: ID!): Tour!
+}
+
+input TourCreateInput {
+    title: String!
+    shortDescription: String
+    description: String
+    isDirectBooking: Boolean!
+    location: String
+    durationDays: Int!
+    categoryIds: [ID!]
+    price: [TourPriceCreateInput!]!
+    program: [TourProgramFragmentCreateInput!]
+    images: [TourImageInput!]
+    inclusions: [TourInclusionInput!]
+    exclusions: [TourExclusionInput!]
+    accommodations: [TourAccommodationInput!]
+}
+
+input TourUpdateInput {
+    title: String
+    shortDescription: String
+    description: String
+    isDirectBooking: Boolean
+    location: String
+    durationDays: Int
+    categoryIds: [ID!]!
+    price: [TourPriceCreateInput!]
+    program: [TourProgramFragmentCreateInput!]
+    images: [TourImageInput!]
+    inclusions: [TourInclusionInput!]
+    exclusions: [TourExclusionInput!]
+    accommodations: [TourAccommodationInput!]
+}
+
+type Tour {
+    id: ID!
+    title: String!
+    shortDescription: String
+    description: String
+    isDirectBooking: Boolean!
+    location: String
+    durationDays: Int!
+    price: [TourPrice!]!
+    program: [TourProgramFragment!]!
+    createdAt: DateTime!
+    updatedAt: DateTime!
+    categories: [Category!]!
+    images: [TourImage!]!
+    inclusions: [TourInclusion!]!
+    exclusions: [TourExclusion!]!
+    accommodations: [TourAccommodation!]!
+}

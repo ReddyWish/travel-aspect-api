@@ -1,0 +1,34 @@
+enum AccommodationStars {
+    THREE_STAR
+    FOUR_STAR
+    FIVE_STAR
+}
+
+extend type Query {
+    tourAccommodations(tourId: ID!): [TourAccommodation!]!
+}
+
+extend type Mutation {
+    createTourAccommodations(tourId: ID!, input: [TourAccommodationInput!]!): [TourAccommodation!]!
+    updateTourAccommodations(tourId: ID!, input: [TourAccommodationUpdateInput!]!): [TourAccommodation!]!
+    deleteTourAccommodations(tourId: ID!): [TourAccommodation!]!
+}
+
+input TourAccommodationInput {
+    stars: AccommodationStars!
+    hotelName: String!
+}
+
+input TourAccommodationUpdateInput {
+    id: ID!
+    stars: AccommodationStars!
+    hotelName: String!
+}
+
+type TourAccommodation {
+    id: ID!
+    stars: AccommodationStars!
+    hotelName: String!
+    createdAt: DateTime!
+    updatedAt: DateTime!
+}
