@@ -24,7 +24,6 @@ model Tour {
   title            String                @db.Text
   shortDescription String?               @db.Text
   description      String?               @db.Text
-  isDirectBooking  Boolean               @default(false) @db.Boolean
   isBestSeller     Boolean               @default(false)
   location         String?               @db.Text
   durationDays     Int                   @default(1) @db.Integer

@@ -4,7 +4,7 @@ export const tours: NonNullable<QueryResolvers['tours']> = async (
   _arg,
   _ctx,
 ) => {
-  const results = await _ctx.prisma.tour.findMany({
+  return _ctx.prisma.tour.findMany({
     include: {
       categories: true,
       price: {
@@ -19,6 +19,4 @@ export const tours: NonNullable<QueryResolvers['tours']> = async (
       accommodations: true,
     },
   });
-
-  return results.map((result) => transformTourData(result));
 };

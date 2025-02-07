@@ -4,7 +4,7 @@ export const tour: NonNullable<QueryResolvers['tour']> = async (
   _arg,
   _ctx,
 ) => {
-  const result = await _ctx.prisma.tour.findUnique({
+  return _ctx.prisma.tour.findUnique({
     where: {
       id: parseInt(_arg.id),
     },
@@ -22,6 +22,4 @@ export const tour: NonNullable<QueryResolvers['tour']> = async (
       accommodations: true,
     },
   });
-
-  return transformTourData(result);
 };
