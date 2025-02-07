@@ -28,8 +28,6 @@ model Tour {
   isBestSeller     Boolean               @default(false)
   location         String?               @db.Text
   durationDays     Int                   @default(1) @db.Integer
-  includes         String?               @db.Text
-  excludes         String?               @db.Text
   createdAt        DateTime              @default(now()) @db.Timestamptz(3)
   updatedAt        DateTime              @default(now()) @db.Timestamptz(3)
   price            TourPrice[]
