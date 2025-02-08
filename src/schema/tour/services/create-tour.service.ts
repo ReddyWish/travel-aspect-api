@@ -31,6 +31,7 @@ export class CreateTourService {
                   currencyId: parseInt(p.currencyId),
                   amount: p.amount,
                   ...(p.comment && { comment: p.comment }),
+                  isBasePrice: p.isBasePrice,
                 })),
               },
             }

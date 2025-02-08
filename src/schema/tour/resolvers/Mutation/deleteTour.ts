@@ -4,6 +4,5 @@ export const deleteTour: NonNullable<MutationResolvers['deleteTour']> = async (
   _arg,
   _ctx,
 ) => {
-  const result = await _ctx.tourService.delete(_arg);
-  return transformTourData(result);
+  return await _ctx.tourService.delete(_arg);
 };

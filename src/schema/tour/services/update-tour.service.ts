@@ -1,9 +1,5 @@
 import { PrismaClient } from '@prisma/client';
-import {
-  MutationdeleteTourArgs,
-  MutationupdateTourArgs,
-  RequireFields,
-} from '../../types.generated';
+import { MutationupdateTourArgs, RequireFields } from '../../types.generated';
 
 export class UpdateTourService {
   constructor(private prisma: PrismaClient) {}
@@ -35,6 +31,7 @@ export class UpdateTourService {
               create: price.map((p) => ({
                 amount: p.amount,
                 ...(p.comment && { comment: p.comment }),
+                isBasePrice: p.isBasePrice,
                 currency: {
                   connect: {
                     id: parseInt(p.currencyId),
@@ -54,9 +51,7 @@ export class UpdateTourService {
                   startTime: fragment.startTime,
                 })),
               }
-            : {
-                deleteMany: {},
-              }),
+            : {}),
         },
         images: {
           deleteMany: {},
@@ -67,9 +62,7 @@ export class UpdateTourService {
                   isPrimary: image.isPrimary ?? false,
                 })),
               }
-            : {
-                deleteMany: {},
-              }),
+            : {}),
         },
         inclusions: {
           deleteMany: {},
@@ -79,9 +72,7 @@ export class UpdateTourService {
                   description: inclusion.description,
                 })),
               }
-            : {
-                deleteMany: {},
-              }),
+            : {}),
         },
         exclusions: {
           deleteMany: {},
@@ -91,9 +82,7 @@ export class UpdateTourService {
                   description: exclusion.description,
                 })),
               }
-            : {
-                deleteMany: {},
-              }),
+            : {}),
         },
         accommodations: {
           deleteMany: {},
@@ -104,10 +93,21 @@ export class UpdateTourService {
                   stars: accommodation.stars,
                 })),
               }
-            : {
-                deleteMany: {},
-              }),
+            : {}),
         },
+      },
+      include: {
+        categories: true,
+        price: {
+          include: {
+            currency: true,
+          },
+        },
+        program: true,
+        images: true,
+        inclusions: true,
+        exclusions: true,
+        accommodations: true,
       },
     });
   }
