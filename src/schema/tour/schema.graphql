@@ -13,7 +13,6 @@ input TourCreateInput {
     title: String!
     shortDescription: String
     description: String
-    isDirectBooking: Boolean!
     isBestSeller: Boolean
     location: String
     durationDays: Int!
@@ -30,7 +29,6 @@ input TourUpdateInput {
     title: String
     shortDescription: String
     description: String
-    isDirectBooking: Boolean
     isBestSeller: Boolean
     location: String
     durationDays: Int
@@ -48,7 +46,6 @@ type Tour {
     title: String!
     shortDescription: String
     description: String
-    isDirectBooking: Boolean!
     isBestSeller: Boolean!
     location: String
     durationDays: Int!
