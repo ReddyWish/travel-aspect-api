@@ -31,7 +31,6 @@ export class UpdateTourService {
               create: price.map((p) => ({
                 amount: p.amount,
                 ...(p.comment && { comment: p.comment }),
-                isBasePrice: p.isBasePrice,
                 currency: {
                   connect: {
                     id: parseInt(p.currencyId),

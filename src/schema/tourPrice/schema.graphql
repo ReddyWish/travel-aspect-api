@@ -13,14 +13,12 @@ input TourPriceUpdateInput {
     currencyId: ID
     amount: Float
     comment: String
-    isBasePrice: Boolean
 }
 
 input TourPriceCreateInput {
     currencyId: ID!
     amount: Float!
     comment: String
-    isBasePrice: Boolean!
 }
 
 type TourPrice {
@@ -30,7 +28,6 @@ type TourPrice {
     currencyId: ID!
     amount: Float!
     comment: String
-    isBasePrice: Boolean
     createdAt: DateTime!
     updatedAt: DateTime!
 }
