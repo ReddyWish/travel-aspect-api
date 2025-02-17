@@ -13,12 +13,9 @@ erDiagram
         string title
         string shortDescription
         string description
-        boolean isDirectBooking
         boolean isBestSeller
         string location
         int durationDays
-        string includes
-        string excludes
         timestamptz createdAt
         timestamptz updatedAt
     }
@@ -26,26 +23,26 @@ erDiagram
     TourAccommodation {
         int id PK
         int tourId FK
-        enum stars
+        AccommodationStars stars
         string hotelName
-        timestamp createdAt
-        timestamp updatedAt
+        timestamptz createdAt
+        timestamptz updatedAt
     }
 
     TourInclusion {
         int id PK
         int tourId FK
         string description
-        timestamp createdAt
-        timestamp updatedAt
+        timestamptz createdAt
+        timestamptz updatedAt
     }
 
     TourExclusion {
         int id PK
         int tourId FK
         string description
-        timestamp createdAt
-        timestamp updatedAt
+        timestamptz createdAt
+        timestamptz updatedAt
     }
 
     TourImage {
