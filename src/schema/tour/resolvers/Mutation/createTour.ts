@@ -1,4 +1,5 @@
-import type { MutationResolvers } from './../../../types.generated';
+import { MutationResolvers } from '../../../types.generated';
+
 export const createTour: NonNullable<MutationResolvers['createTour']> = async (
   _parent,
   _arg,

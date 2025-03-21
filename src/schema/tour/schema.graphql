@@ -1,3 +1,5 @@
+scalar File
+
 extend type Query {
     tours: [Tour!]!
     tour(id: ID!): Tour
