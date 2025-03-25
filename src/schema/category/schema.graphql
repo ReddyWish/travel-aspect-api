@@ -9,16 +9,22 @@ extend type Mutation {
     deleteCategory(id: ID!): Category!
 }
 
+input CategoryImageInput {
+    id: ID
+    file: File
+    imageUrl: String
+}
+
 input CategoryCreateInput {
     name: String!
     description: String
-    imageUrl: String!
+    image: CategoryImageInput
 }
 
 input CategoryUpdateInput {
     name: String
     description: String
-    imageUrl: String!
+    image: CategoryImageInput
 }
 
 type Category {
